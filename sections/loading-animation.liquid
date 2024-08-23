@@ -1,0 +1,141 @@
+{% liquid
+  assign enable_bottom_link = section.settings.enable_bottom_link
+  assign loaded_bottom_link = section.settings.loaded_bottom_link
+  assign loaded_bottom_link_label = section.settings.loaded_bottom_link_label
+%}
+<style>
+:root {
+  --background_color: {{ section.settings.background_color | color_to_rgba }};
+  --motion_background_color: {{ section.settings.motion_background_color | color_to_rgba }};
+}
+{%- if section.settings.hide_admin_bar -%}
+iframe#preview-bar-iframe {
+  display: none;
+}
+{%- endif -%}
+</style>
+<div class="site-loading-animation">
+  <div class="site-loading-animation-top logo-hover-{{- section.settings.select_animation -}}">
+    <a href="{%- if section.settings.logo_url != blank -%}{{ section.settings.logo_url }}{%- else -%}{{ routes.root_url }}{%- endif -%}"
+      class="d-block position-relative">
+      {% if section.settings.logo != blank %}
+        {{ section.settings.logo }}
+      {% endif %}
+    </a>
+  </div>
+  {% if enable_bottom_link and loaded_bottom_link%}
+    <div class="site-loading-animation-bottom">
+      <a href="{{ loaded_bottom_link }}" class="link site-loading-animation-link">
+        {%- if loaded_bottom_link_label != blank -%}{{ loaded_bottom_link_label }}{%- else -%}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <mask id="path-1-inside-1_1_2329" fill="white">
+        <path d="M18.7707 8.15796L19.5 8.84214L12.0382 15.8421L12 15.8063L11.9618 15.8421L4.5 8.84214L5.22931 8.15796L12 14.5096L18.7707 8.15796Z"/>
+        </mask>
+        <path d="M18.7707 8.15796L19.4549 7.42865L18.7707 6.78681L18.0865 7.42865L18.7707 8.15796ZM19.5 8.84214L20.1842 9.57145L20.9616 8.84214L20.1842 8.11282L19.5 8.84214ZM12.0382 15.8421L11.354 16.5715L12.0382 17.2133L12.7224 16.5715L12.0382 15.8421ZM12 15.8063L12.6842 15.077L12 14.4351L11.3158 15.077L12 15.8063ZM11.9618 15.8421L11.2776 16.5715L11.9618 17.2133L12.646 16.5715L11.9618 15.8421ZM4.5 8.84214L3.81582 8.11282L3.03839 8.84214L3.81582 9.57145L4.5 8.84214ZM5.22931 8.15796L5.91349 7.42865L5.22931 6.78681L4.54513 7.42865L5.22931 8.15796ZM12 14.5096L11.3158 15.2389L12 15.8808L12.6842 15.2389L12 14.5096ZM20.1842 8.11282L19.4549 7.42865L18.0865 8.88727L18.8158 9.57145L20.1842 8.11282ZM11.3158 16.5356L11.354 16.5715L12.7224 15.1128L12.6842 15.077L11.3158 16.5356ZM11.3158 15.077L11.2776 15.1128L12.646 16.5715L12.6842 16.5356L11.3158 15.077ZM5.18418 9.57145L5.91349 8.88727L4.54513 7.42865L3.81582 8.11282L5.18418 9.57145ZM18.0865 7.42865L11.3158 13.7803L12.6842 15.2389L19.4549 8.88727L18.0865 7.42865ZM12.7224 16.5715L20.1842 9.57145L18.8158 8.11282L11.354 15.1128L12.7224 16.5715ZM12.646 15.1128L5.18418 8.11282L3.81582 9.57145L11.2776 16.5715L12.646 15.1128ZM4.54513 8.88727L11.3158 15.2389L12.6842 13.7803L5.91349 7.42865L4.54513 8.88727Z" fill="black" mask="url(#path-1-inside-1_1_2329)"/>
+        </svg>{%- endif -%}
+      </a>
+    </div>
+{% endif %}
+</div>
+{%  javascript %}
+document.querySelectorAll('.site-loading-animation-bottom a').forEach(el => {
+  el.addEventListener('click', (event) => {
+    event.preventDefault();
+    document.querySelector('.site-loading-animation').classList.add('next-screen');
+    setTimeout(function() {
+      window.location.href = event.target.closest('a').href;
+    }, 500);
+  });
+});
+document.querySelectorAll('.template-index .site-loading-animation-top a').forEach(el => {
+  el.addEventListener('click', (event) => {
+    event.preventDefault();
+    document.querySelector('.site-loading-animation').classList.add('next-screen');
+    setTimeout(function() {
+      window.location.href = event.target.closest('a').href;
+    }, 300);
+  });
+});
+{% endjavascript %}
+{% schema %}
+  {
+    "name": "t:sections.loading_animation.name",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "logo",
+        "label": "Vector image SVG code",
+        "info": "Add SVG code starting with <svg..."
+      },
+      {
+        "type": "url",
+        "id": "logo_url",
+        "label": "Logo URL",
+        "info": "If not, default will be /, other if you want to add link to logo"
+      },
+      {
+        "type": "checkbox",
+        "id": "hide_admin_bar",
+        "default": false,
+        "label": "t:sections.loading_animation.hide_admin_bar"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_bottom_link",
+        "default": false,
+        "label": "t:sections.loading_animation.enable_bottom_link"
+      },
+      {
+        "type": "url",
+        "id": "loaded_bottom_link",
+        "label": "t:sections.loading_animation.bottom_link"
+      },
+      {
+        "type": "text",
+        "id": "loaded_bottom_link_label",
+        "label": "t:sections.loading_animation.bottom_link_label"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.loading_animation.animation_style"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "t:sections.loading_animation.background_color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "motion_background_color",
+        "label": "t:sections.loading_animation.motion_background_color",
+        "default": "#beb864"
+      },
+      {
+        "type": "select",
+        "id": "select_animation",
+        "label": "t:sections.coming_animation.select_animation",
+        "options": [
+          {
+            "value": "none",
+            "label": "t:sections.coming_animation.select_animation__1.label"
+          },
+          {
+            "value": "letter",
+            "label": "t:sections.coming_animation.select_animation__2.label"
+          },
+          {
+            "value": "word",
+            "label": "t:sections.coming_animation.select_animation__3.label"
+          }
+        ],
+        "default": "none"
+      }
+    ],
+    "presets": [
+      {
+        "name": "t:sections.loading_animation.name"
+      }
+    ]
+  }
+{% endschema %}

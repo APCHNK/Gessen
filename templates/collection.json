@@ -1,0 +1,23 @@
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "background-1"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "quantity": ""
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid"
+  ]
+}

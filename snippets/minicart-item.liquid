@@ -1,0 +1,44 @@
+{%- capture mini_cart_item_layout -%}
+
+  <div class="yas-menuf-item" data-minicart-item="[[itemVariantId]]">
+        <a href="[[itemUrl]]" class="yas-menuf-item-img">
+          [[itemImage]]
+        </a>
+        <div class="yas-menuf-item-info">
+          <a href="[[itemUrl]]" class="yas-menuf-item-title">[[itemTitle]]</a>
+          <div class="yas-menuf-item-option">[[itemVariant_title]] </div>
+          <div class="yas-menuf-item-qaun quantity-picker">
+              <button class="qty-count qty-count--minus quantity-picker__btn--decrease" data-minicart-minus type="button">
+                <span></span>
+              </button>
+              <input class="product-qty" type="text" name="product-qty" min="0" max="" value="[[itemQuantity]]" data-minicart-count>
+              <button class="qty-count qty-count--add" data-minicart-plus type="button">
+                <span></span>
+              </button>
+          </div>
+        </div>
+        <div class="yas-menuf-item-price">
+          <span>[[itemPrice]]</span>
+        </div>
+  </div>
+  <div class="emp">
+    Could not add to cart. Only [[itemQuantity]] item(s) are available
+  </div>
+  <style>
+    .emp{
+      display: none;
+      font-family: "Studio Pro Trial", sans-serif;;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 167%;
+      color: #b10000;
+     margin-bottom: 20px;
+     margin-left: 20px;
+    }
+  </style>
+  {%- endcapture -%}
+  {%- assign str = '}}' -%}
+  <script>
+      var miniCartItem = {{- mini_cart_item_layout | json | replace: '[[', '{{' | replace: ']]', str -}}
+  </script>
+  

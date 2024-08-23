@@ -1,0 +1,20 @@
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "settings": {
+        "menu": "footer",
+        "socials": "socials",
+        "newsletter": "Newsletter",
+        "copyright": "© GESSEN 2024",
+        "mod_title": "10% OFF YOUR FIRST ORDER",
+        "mod_text": "Sign up to our newsletter to receive a complimentary 10% discount on your first order."
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

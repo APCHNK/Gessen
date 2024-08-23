@@ -1,0 +1,182 @@
+<div class="yas-menu-f yas-menu-f-minicart" id="yas-cartpop">
+  <div class="yas-menu-f-title">
+     <span>Cart</span> <button class="yas-menu-close"><span>X close</span></button>
+  </div>
+<form action="/cart" method="post">
+<div class="yas-menuf-item-w">
+  <div class="cart-items" data-minicart-items></div>
+</div> 
+{% comment %}
+<div class="minicart-wrapper {% if cart.item_count == 0 %}empty{% endif %}" data-minicart>
+    <div class="overlay" data-minicart-close></div>
+    <div
+        aria-modal="true"
+        class="minicart"
+        data-minicart
+        role="dialog">
+        <div class="minicart__header">
+            <h3 class="title">My Bag</h3>
+            <p class="cart-info">Free shipping on all domestic orders over $150</p>
+            <button class="close-button" data-minicart-close type="button"></button>
+        </div>
+        <form action="/cart" method="post">
+            <div class="minicart__body">
+                <div class="cart-items" data-minicart-items></div>
+            </div>
+
+            <div class="minicart__footer">
+                <div class="minicart__footer-titleSection">
+                    <h5 class="title">Subtotal</h5>
+                    <span class="subtotal" data-minicart-subtotal>
+                        {{ cart.total_price | money }}
+                    </span>
+                </div>
+                <div class="mini-cart__footer-buttonsSection">
+                    <a class="cart-button" href="{{ routes.cart_url }}">
+                        Go to cart
+                    </a>
+                    <button class="cart-button" name="checkout" type="submit">
+                        Checkout
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div class="empty-cartnote">
+            <div>
+                <h4>Oops, There’s nothing in your cart</h4>
+                <a class="cart-button" href=" {{ routes.all_products_collection_url }}">Shop now</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endcomment %}
+ 
+  <div class="yas-menuf-cartbtn">
+    <div class="yas-menuf-vat-pr">
+      <span>Subtotal (Incl. vat)</span> <span class="subtotal" data-minicart-subtotal>{{ cart.total_price | money }}</span>
+    </div>
+    <div class="term">
+       <div class="block">
+            <div class="text"> I agree to the </div>
+            <a href="#menu-text-p3" data-name="terms" class="menu-text-btn">Terms and Conditions</a>
+       </div>
+        <div class="check">
+            <div class="checked show">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0.5" y="0.5" width="19" height="19" stroke="#181806" />
+                </svg>
+            </div>
+            <div class="unchecked">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0.5" y="0.5" width="19" height="19" fill="black" fill-opacity="0.1"/>
+                    <rect x="0.5" y="0.5" width="19" height="19" stroke="#181806"/>
+                    <path d="M5.33334 9.66667L8.66668 13L14.6667 7" stroke="black"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+    <button class="cart-button disabled" name="checkout" type="submit" disabled>Checkout</button>
+    <div class="yas-menuf-bottom-image">
+        <img src="https://cdn.shopify.com/s/files/1/0551/5726/0421/files/icon_cart_3.png?v=1710871762" style="height: 15px;" alt="payments" />
+    </div>
+  </div>
+</form>
+  {% render 'minicart-item', product %}
+</div>
+<style>
+    .term, .term .block{
+        display: flex;
+    }
+    .term{
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 5px;
+    }
+    .term .text{
+        font-family: 'Studio Pro', sans-serif;;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 150%;
+        text-transform: uppercase;
+        color: #181806;
+    }
+    .term a{
+        font-family: 'Studio Pro', sans-serif;;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 150%;
+        text-transform: uppercase;
+        color: #181806;
+        text-decoration: underline;
+        text-decoration-skip-ink: none;
+        margin-left: 5px;
+    }
+    .term .check{
+        /* border: 1px dashed black; */
+        height: 48px;
+        width: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        margin-right: -14px;
+    }
+    .term .unchecked{
+        display: none;
+        height: 20px;
+        width: 20px;
+    }
+    .term .checked{
+        display: none;
+        height: 20px;
+        width: 20px;
+    }
+    .show{
+        display: block !important;
+    }
+    .disabled{
+        background: #878785 !important;
+        color: #fff !important;
+    }
+    .disabled:hover{
+        border: unset !important;
+    }
+    .yas-menuf-cartbtn button{
+        margin-top: 5px;
+    }
+    .yas-menu-f-minicart .cart-items{
+        max-height: calc(100vh - 237px);
+    }
+</style>
+<script>
+    const button = document.querySelector('.check')
+    button.addEventListener('click', ()=>{
+        const ch = button.querySelector('.checked')
+        const unch = button.querySelector('.unchecked')
+
+        ch.classList.toggle('show')
+        unch.classList.toggle('show')
+
+        const checkoutButton = document.querySelector('.cart-button')
+        checkoutButton.classList.toggle('disabled')
+        if (checkoutButton.classList.contains('disabled')) {
+            checkoutButton.disabled = true
+            checkoutButton.style.cursor = 'not-allowed'
+        }else{
+            checkoutButton.disabled = false
+            checkoutButton.style.cursor = 'pointer'
+        }
+    })
+
+    
+const closeMenuButton = document.querySelectorAll('.yas-menu-close')
+
+closeMenuButton.forEach(button => {
+  button.addEventListener('click', () => {
+    const emp = document.querySelectorAll('.emp')
+    emp.forEach(emps => {
+      emps.style.display = 'none'
+    })
+  })
+})
+</script>

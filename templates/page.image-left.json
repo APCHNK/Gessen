@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "enable_page_title": true
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

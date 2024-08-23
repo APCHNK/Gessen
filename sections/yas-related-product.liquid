@@ -1,0 +1,161 @@
+<style>
+  .yas_related-wrapp{
+    display: flex;
+    flex-wrap: wrap;
+    border-top: 1px solid #DEDEDD;
+    background: #fff;
+    position: relative;
+  }
+  .yas_related-wrapp h2{
+    margin: 13px 13px;
+    color: #181806;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px; /* 150% */
+    text-transform: uppercase;
+  }
+  .yas_related-item-w{
+    display: flex;
+  }
+  .yas_related-item{
+    width: calc(100% / 3);
+    position: relative;
+  }
+  .yas_related-item-title{
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px; /* 150% */
+    text-transform: uppercase;
+    color: #181806;
+  }
+  .yas_related-item img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 5 / 5;
+  }
+  .yas_related-item a{
+    display: flex;
+    position: ralative;
+  }
+  .yas_related-item a:hover .yas_related-item-title{
+    text-decoration: underline;
+  }
+  .yas_related-item a:hover:after{
+     background: var(--overlay-black-5, rgba(0, 0, 0, .05));
+     position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+  }
+  .yas_diferenc{
+    mix-blend-mode: difference;
+  }
+  .yas_diferenc .yas_related-item-title{
+    color: #fff;
+     mix-blend-mode: difference;
+  }   
+  @media (max-width: 767px){
+    .yas_related-item-title{
+      top: 8px;
+    }
+    .yas_related-item-w .yas_related-item:nth-child(n+3){
+      display: none;
+    }
+    .yas_related-item img{
+      aspect-ratio: 5 / 6;
+    }
+    .yas_related-item {
+      width: calc(100% / 2);
+    }
+   
+  }
+</style>
+
+<div class="yas_related-wrapp">
+  <h2>{{ section.settings.title }}</h2>
+  <div class="yas_related-item-w">
+  
+    {% if product.metafields.custom.related_section_product.value.count > 0 %}
+
+        {% for product in product.metafields.custom.related_section_product.value %}
+        <div class="yas_related-item">
+          <a href="{{ product.url }}" class="yas_diferenc">
+            <div class="yas_related-item-title">
+              {{ product.title }}
+            </div>
+          </a>
+          <a href="{{ product.url }}">
+          {% if product.metafields.custom.section_product_preview != blank %}
+              <img class="blur-up lazyload" data-src="{{ product.metafields.custom.section_product_preview | img_url: '2500x' , format: 'pjpg' }}" src="{{ product.metafields.custom.section_product_preview | img_url: '30x' , format: 'pjpg' }}"  alt="{{ product.title }}">
+            {% else %}
+              <img class="blur-up lazyload" data-src="{{ product.featured_image | img_url: '2500x' , format: 'pjpg' }}" src="{{ product.featured_image | img_url: '30x' , format: 'pjpg' }}" alt="{{ product.title }}">
+            {% endif %}
+          </a>
+        </div>
+        {% endfor %}
+    {% else %}
+    {% for block in section.blocks %}
+    <div class="yas_related-item">
+      <a href="{{ block.settings.product.url }}" class="yas_diferenc">
+        <div class="yas_related-item-title">
+          {{ block.settings.product.title }}
+        </div>
+      </a>
+      <a href="{{ block.settings.product.url }}">
+      {% if block.settings.product.metafields.custom.section_product_preview != blank %}
+          <img class="blur-up lazyload" data-src="{{ block.settings.product.metafields.custom.section_product_preview | img_url: '2500x' , format: 'pjpg' }}" src="{{ block.settings.product.metafields.custom.section_product_preview | img_url: '300x' , format: 'pjpg' }}" alt="{{ block.settings.product.title }}">
+        {% else %}
+          <img class="blur-up lazyload" data-src="{{ block.settings.product.featured_image | img_url: '2500x' , format: 'pjpg' }}" src="{{ block.settings.product.featured_image | img_url: '300x' , format: 'pjpg' }}" alt="{{ block.settings.product.title }}">
+        {% endif %}
+      </a>
+    </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "yas related product",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title section"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "product",
+        "name": "Product",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "product"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "yas related product"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

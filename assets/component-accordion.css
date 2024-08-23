@@ -1,0 +1,125 @@
+
+
+.accordion summary {
+  display: flex;
+  position: relative;
+  line-height: 1;
+  padding: 12px 16px 8px;
+}
+
+
+
+.accordion .summary__title {
+  display: flex;
+  flex: 1;
+}
+
+.accordion .summary__title + .icon-caret {
+  height: calc(var(--font-heading-scale) * 0.6rem);
+}
+
+.accordion ~ .accordion:not(.classmetship){
+  margin-top: 0;
+  border-top: none;
+}
+.accordion ~ .accordion:not(.classmetship) details {
+  border-top: 1px solid transparent;
+  margin-top: -1px !important;
+}
+
+.accordion {
+  margin: 0 !important;
+  border: none;
+}
+.accordion details{
+  border: 1px solid #DEDEDD;
+}
+.accordion details:hover{
+  border-color: #181806;
+}
+.accordion ~ .accordion:not(.classmetship) details:hover{
+  border-color: #181806;
+}
+.accordion details[open], .accordion ~ .accordion details[open] {
+ 
+}
+.accordion ~ .accordion:not(.classmetship) details[open]{
+  margin-top: -1px !important;
+ 
+}
+.accordion details[open] svg{
+  transform: rotate(180deg);
+}
+
+.accordion__title {
+  display: inline-block;
+  max-width: calc(100% - 6rem);
+  min-height: 1.6rem;
+  margin: 0;
+  word-break: break-word;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 150% */
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+}
+
+.accordion .icon-accordion {
+  align-self: center;
+  fill: rgb(var(--color-foreground));
+  height: calc(var(--font-heading-scale) * 2rem);
+  margin-right: calc(var(--font-heading-scale) * 1rem);
+  width: calc(var(--font-heading-scale) * 2rem);
+}
+
+.accordion details[open] > summary .icon-caret {
+  transform: rotate(180deg);
+}
+
+.accordion__content {
+  margin-bottom: 0;
+  word-break: break-word;
+  overflow-x: auto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 166.667% */
+}
+.product__accordion .accordion__content {
+  padding: 0 16px 11px;
+  cursor: pointer;
+  color: black;
+}
+.product__accordion .accordion__content img{
+  margin: 0 auto;
+  display: block;
+}
+.product__accordion .accordion__content p{
+  margin: 0 0 14px;
+}
+.product__accordion .accordion__content p:last-child{
+  margin: 0px;
+}
+.accordion__content img {
+  max-width: 100%;
+}
+
+.product__accordion[data-visible="false"]{
+  display: none;
+}
+@media (max-width: 989px) {
+  .accordion details:hover{
+    border: 1px solid #DEDEDD;
+  }
+  .accordion details:active{
+    border: 1px solid #181806;
+  }
+  .accordion ~ .accordion:not(.classmetship) details:hover{
+    border: 1px solid #DEDEDD;
+  }
+  .accordion ~ .accordion:not(.classmetship) details:active{
+    border: 1px solid #181806;
+  }
+}

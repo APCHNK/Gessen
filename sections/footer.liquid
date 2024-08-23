@@ -1,0 +1,758 @@
+<style>
+  .mob
+  {
+    display: none;
+  }
+  .desk
+  {
+    display: flex;
+    align-items: center;
+  }
+  .font-yas
+  {
+      font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+ 
+    text-transform: uppercase;
+    
+  }
+  .yas-footer
+  {
+    display: flex;
+    flex-wrap: no-wrap;
+ 
+    padding-top: 8px;
+    padding-bottom: 16px;
+   
+    height: 158px;
+    
+  }
+  .footer-left
+  {
+  
+   width: calc(100% - 279px);
+  }
+  
+
+  
+  .footer-menu
+  {
+    height: 32px;
+    align-items: center;
+    width: 450px;
+    display: flex;
+  }
+  .menu-item
+  {
+ 
+  }
+  .menu-item a
+  {
+    letter-spacing: 0; 
+    padding: 8px 16px;
+    color: #181806;
+    text-align: center;
+    text-decoration: none;
+  }
+ .menu-item a span{
+      position: relative;
+     display: inline-block;
+    }
+    .menu-item a:hover span:after{
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background: #000;
+      bottom: 0;
+      left: 0;
+    }
+  .footer-subscribe
+  {
+    padding-left: 16px;
+    padding-top: 40px;
+    width: 400px;
+     display: flex;
+    flex-wrap: wrap;
+    height: 62px;
+    
+  }
+  .footer-left .footer-subscribe{
+    height: auto;
+    flex-direction: column;
+  }
+  .footer-subscribe-input
+  {
+    height: 40px;
+    width:310px;
+    margin:0;
+     border: 1px solid #181806;
+    padding-left: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 12px;
+    line-height: 20px;
+    border-radius: 0;
+    color: #878785;
+    
+  }
+  .form__input.footer-subscribe-input{
+    border-right: 0px;
+  }
+  .footer-subscribe-flex{
+    display: flex;
+    position: relative;
+  }
+  .footer-subscribe-title
+  {
+    margin-bottom: 4px;
+    color: #878785;
+    
+  }
+  .newsletter-modal .footer-subscribe-button, .footer-subscribe-button
+  {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    margin: 0;
+    margin-left: 0px;
+    background: white;
+    border: 1px solid #181806;
+    border-left: 0;
+    padding: 6px;
+    cursor: pointer;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .newsletter-modal .footer-subscribe-button:hover, .footer-subscribe-button:hover{
+    background-color: #181806;
+    color: #fff;
+  }
+  .newsletter-modal .footer-subscribe-button:hover svg path,
+  .newsletter-modal .footer-subscribe-button:active svg path,
+  .footer-subscribe-button:hover svg path,
+  .footer-subscribe-button:active svg path{
+    fill: #fff;
+  }
+  .newsletter-modal .footer-subscribe-button:active,
+  .footer-subscribe-button:active{
+    background-color: #B8B201; 
+    color: #fff;
+  }
+  .footer-right
+  {
+    flex-wrap: wrap;
+    width: 292px;
+        align-items: flex-start;
+  }
+   .socials
+  {
+    
+    width: 292px;
+    height: 32px;
+   
+   
+  }
+  .footer-copyright
+  {
+     color: #878785;
+    height: 18px;
+   
+    text-align: right;
+    padding-right: 16px;
+     width: 100%;
+       margin-top: auto;
+  }
+
+.footer-subscribe-w{
+  display: flex;
+  position: relative;
+}
+
+.footer-subscribe-w .main-password-section__message{
+  margin: 0;
+  padding: 0;
+}
+
+
+
+.newsletter-modal.hidden {
+    display: none
+}
+
+.newsletter-modal-close {
+    border: none;
+    background: none;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    text-transform: uppercase;
+    color: #181806;
+   margin-left: auto;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.newsletter-modal-close:hover {
+    text-decoration: underline;
+}
+
+.newsletter-modal-content {
+    padding: 16px ;
+}
+
+.newsletter-modal .newsletter-heading {
+   
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    text-transform: uppercase;
+    color: #181806;
+    margin: 0;
+}
+.newsletter-modal .newsletter-heading-w{
+  padding-bottom: 15px;
+}
+.newsletter-modal .newsletter-form__field-wrapper > div{
+    line-height: 0;
+  }
+.newsletter-modal {
+ 
+    border: 0px solid #181806;
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    width: 350px;
+    z-index: 9;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(32px) brightness(1.6) contrast(0.9) saturate(1);
+    -webkit-backdrop-filter: blur(32px) brightness(1.6) contrast(0.9) saturate(1);
+    border: 1px solid #181806;
+}
+.newsletter-modal .newsletter-form__field-wrapper{
+    line-height: normal
+  }
+.newsletter-modal .footer-subscribe-input,
+.newsletter-modal .footer-subscribe-button{
+   background: transparent;
+ }
+.form__input {
+   
+    border: 1px solid #181806;
+    border-radius: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    padding: 9px 15px;
+    letter-spacing: initial
+}
+   .input2
+    {
+      width: 278px;
+    }
+
+ .form__submit {
+    background-color: #fff;
+    border: 1px solid #181806;
+    border-radius: 0;
+    padding: 8px;
+}
+
+ .form__submit:focus {
+    background-color: #B8B201;
+}
+
+.form__submit:hover:not(:focus) {
+    background-color: #181806;
+}
+.lbl
+  {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    margin-bottom: 16px;
+    display: inline-flex;
+    color: #181806;
+  }
+@media (max-width: 926px){
+  .newsletter-modal{
+    bottom: 16px;
+  } 
+}
+@media (max-width: 500px) {
+  .newsletter-modal{
+    bottom: 16px;
+  }
+}
+@media (min-width: 480px) {
+    .newsletter-modal {
+        min-height: 160px;
+        width: 350px;
+    }
+}
+
+@media (max-width: 379px){
+  .newsletter-modal{
+     width: calc(100% - 32px);
+  }
+}
+
+  @media (max-width: 989px){
+     .yas-footer{
+        padding-top: 48px;
+      }
+  }
+  @media (max-width: 767px)
+  {
+    .mob
+    {
+      display: flex;
+    }
+    .desk
+    {
+      display: none;
+    }
+      .yas-footer
+      {
+        display: flex;
+        flex-wrap: wrap;
+
+        padding-bottom: 16px;
+        height: auto;
+
+      }
+      .footer-left
+      {
+      height: 100%;
+       width: 100%;
+        border-top: 1px solid #DEDEDD;
+        padding-top: 4px;
+      }
+     .footer-menu
+      {
+        margin:0;
+       height: 160px;
+        flex-wrap: wrap;
+        width: 100%;
+       
+      }
+    .menu-item
+      {
+      height: 40px;
+        margin: 0px;
+        width: 100%;
+  
+        line-height: 18px;
+      }
+      .menu-item a
+      {
+       width: 100%;
+        text-align: left;
+        display: inline-flex;
+        padding: 11px 16px;
+      }
+   
+      .footer-subscribe
+      {
+        
+        width: 100%;
+ 
+        padding: 12px 16px 16px;
+        height: auto;
+        
+      }
+       .footer-subscribe form
+      {
+        width: 100%;
+      }
+      .footer-left .footer-subscribe-input
+      {
+      
+        width:100%;
+      
+      
+      }
+      .newsletter-modal .input2 {
+        width: calc(100% - 40px);
+      }
+    
+     .socials
+      {
+        margin:0;
+        width: 100%;
+        height: 120px;
+        flex-wrap: wrap;
+      }
+      .footer-copyright{
+      display: block;
+      width: 100%;
+      height: auto;
+      padding-top: 8px;
+      padding-right: 0;
+        text-align: center;
+    }
+    
+  }
+  
+</style>
+<div class="yas-footer">
+  <div class="footer-left">
+    <div class="footer-menu font-yas">
+        {% for link in section.settings.menu.links %}
+            <div class="menu-item font-yas">
+               <a href="{{ link.url }}" data-name="{{ link.title | downcase }}"><span>{{ link.title }}</span></a>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="socials mob">
+      {% for link in section.settings.socials.links %}
+        <div class="menu-item font-yas">
+              <a href="{{ link.url }}" ><span>{{ link.title }}</span></a>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="footer-subscribe">
+          
+            <div class="footer-subscribe-title font-yas">
+              {{ section.settings.newsletter }}
+            </div>
+               <div class="footer-subscribe-w">
+
+              {% form 'customer', class: 'position-relative footer-newsletter' %}
+    
+                      <div class="main-password-section__message">
+                        <h3
+                          class="text-0.875 mb-0"
+                          data-alert="status"
+                          id="Newsletter-success--{{ section.id }}"
+                          tabindex="-1"
+                        >
+                          {{ 'newsletter.success' | t }}
+                        </h3>
+                      </div>
+  
+                      <script type="application/json" class="form-alerts">
+                        {
+                          "error": "Error",
+                          "success": "{{ 'newsletter.success' | t }}"
+                        }
+                      </script>
+  
+                      <div data-form-inner>
+                        <div class="main-password-section__label rte" data-block-id="{{ section.id }}">
+                          {{ block.settings.content }}
+                        </div>
+                        <input type="hidden" name="contact[tags]" value="newsletter">
+                        <div class="newsletter-form__field-wrapper">
+                          <div class="position-relative footer-subscribe-flex">
+                            <label class="visually-hidden" for="NewsletterForm--{{ section.id }}">
+                              {{ 'newsletter.label' | t }}
+                            </label>
+                            <input
+                              id="NewsletterForm--{{ section.id }}"
+                              type="email"
+                              name="contact[email]"
+                              class="form__input footer-subscribe-input"
+                              value="{{ form.email }}"
+                              aria-required="true"
+                              autocorrect="off"
+                              autocapitalize="off"
+                              autocomplete="email"
+                              {% if form.errors %}
+                                autofocus
+                                aria-invalid="true"
+                                aria-describedby="Newsletter-error--{{ section.id }}"
+                              {% elsif form.posted_successfully? %}
+                                aria-describedby="Newsletter-success--{{ section.id }}"
+                              {% endif %}
+                              placeholder="Enter your email address"
+                              required
+                            >
+                            <button
+                              type="submit"
+                              class="form__submit footer-subscribe-button"
+                              name="commit"
+                              id="Subscribe"
+                              aria-label="{{ 'newsletter.button_label' | t }}"
+                            >
+                              <svg width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <mask id="path-1-inside-1_4863_6004" fill="white">
+                              <path d="M0.15625 1.22931L0.840429 0.5L7.84043 7.96178L7.80458 8L7.84043 8.03822L0.840429 15.5L0.15625 14.7707L6.50792 8L0.15625 1.22931Z"/>
+                              </mask>
+                              <path d="M0.15625 1.22931L-0.573064 0.545135L-1.2149 1.22931L-0.573064 1.91349L0.15625 1.22931ZM0.840429 0.5L1.56974 -0.184179L0.840429 -0.961605L0.111115 -0.184179L0.840429 0.5ZM7.84043 7.96178L8.56974 8.64596L9.21158 7.96178L8.56974 7.2776L7.84043 7.96178ZM7.80458 8L7.07526 7.31582L6.43343 8L7.07526 8.68418L7.80458 8ZM7.84043 8.03822L8.56974 8.72239L9.21158 8.03822L8.56974 7.35404L7.84043 8.03822ZM0.840429 15.5L0.111115 16.1842L0.840429 16.9616L1.56974 16.1842L0.840429 15.5ZM0.15625 14.7707L-0.573064 14.0865L-1.2149 14.7707L-0.573064 15.4549L0.15625 14.7707ZM6.50792 8L7.23724 8.68418L7.87907 8L7.23724 7.31582L6.50792 8ZM0.111115 -0.184179L-0.573064 0.545135L0.885564 1.91349L1.56974 1.18418L0.111115 -0.184179ZM8.53389 8.68418L8.56974 8.64596L7.11111 7.27761L7.07526 7.31582L8.53389 8.68418ZM7.07526 8.68418L7.11111 8.72239L8.56974 7.35404L8.53389 7.31582L7.07526 8.68418ZM1.56974 14.8158L0.885564 14.0865L-0.573064 15.4549L0.111115 16.1842L1.56974 14.8158ZM-0.573064 1.91349L5.77861 8.68418L7.23724 7.31582L0.885564 0.545135L-0.573064 1.91349ZM8.56974 7.2776L1.56974 -0.184179L0.111115 1.18418L7.11112 8.64596L8.56974 7.2776ZM7.11112 7.35404L0.111115 14.8158L1.56974 16.1842L8.56974 8.72239L7.11112 7.35404ZM0.885564 15.4549L7.23724 8.68418L5.77861 7.31582L-0.573064 14.0865L0.885564 15.4549Z" fill="#181806" mask="url(#path-1-inside-1_4863_6004)"/>
+                              </svg>
+                            </button>
+                          </div>
+                          {%- if form.errors -%}
+                            <p class="text-0.875 mb-0" id="Newsletter-error--{{ section.id }}">
+                              {{ form.errors.translated_fields.email | capitalize }}
+                              {{ form.errors.messages.email }}
+                            </p>
+                          {%- endif -%}
+                        </div>
+                      </div>
+                    {% endform %}
+
+               </div>
+       
+    </div>
+     <div class="footer-copyright font-yas mob">
+      {{ section.settings.copyright }}
+    </div>
+  </div>
+  <div class="footer-right desk">
+    <div class="socials desk ">
+      {% for link in section.settings.socials.links %}
+        <div class="menu-item font-yas">
+         <a href="{{ link.url }}"><span>{{ link.title }}</span></a>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="footer-copyright font-yas">
+      {{ section.settings.copyright }}
+    </div>
+  </div>
+</div>
+
+ <div class="newsletter-modal hidden">
+                        <div class="newsletter-modal-content">
+                          {% form 'customer', class: 'position-relative footer-newsletter' %}
+                              <div class="newsletter-heading-w justify-content-between" style="display: flex;">
+                             
+                                <h2 class="newsletter-heading">
+                                {{ section.settings.mod_title }}
+                                </h2>
+                           
+                              <button class="newsletter-modal-close align-self-start">x&nbsp;&nbsp;close</button>
+                            </div>
+                            <div class="newslettr-modal-inner position-relative">
+                               <div class="main-password-section__message">
+                                <div class="lbl">                            
+                                     {{ section.settings.mod_text }}
+                                </div>
+                                <h3
+                                  class="text-0.875 mb-0"
+                                  data-alert="status"
+                                  id="Newsletter-success--{{ section.id }}"
+                                  tabindex="-1"
+                                >
+                                  {{ 'newsletter.success' | t }}
+                                </h3>
+                              </div>
+          
+                            
+                              <script type="application/json" class="form-alerts">
+                                {
+                                  "error": "Error",
+                                  "success": "Thanks for signing up."
+                                }
+                              </script>
+          
+                              <div data-form-inner>
+                              
+                                <input type="hidden" name="contact[tags]" value="newsletter">
+                            
+                                <div class="newsletter-form__field-wrapper">
+                                  
+                                    <label class="lbl" for="NewsletterForm" style="">
+                                     {{ section.settings.mod_text }}
+                                    </label>
+                                  <div class="" style="position: relative;">
+                                    <input
+                                      id="NewsletterForm--{{ section.id }}"
+                                      type="email"
+                                      name="contact[email]"
+                                      class="footer-subscribe-input input2"
+                                      value="{{ form.email }}"
+                                      aria-required="true"
+                                      autocorrect="off"
+                                      autocapitalize="off"
+                                      autocomplete="email"
+                                      {% if form.errors %}
+                                        autofocus
+                                        aria-invalid="true"
+                                        aria-describedby="Newsletter-error--{{ section.id }}"
+                                      {% elsif form.posted_successfully? %}
+                                        aria-describedby="Newsletter-success--{{ section.id }}"
+                                      {% endif %}
+                                      placeholder="Enter your E-mail"
+                                      required
+                                    >
+                                    <button
+                                      type="submit"
+                                      style="position: absolute; padding-top: 6px;right: 0; top: 0;"
+                                      class="footer-subscribe-button"
+                                      name="commit"
+                                      id="Subscribe"
+                                      aria-label=""
+                                    >
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <mask id="footer-submit-button-mas" fill="white">
+                                        <path d="M8.15796 5.22931L8.84214 4.5L15.8421 11.9618L15.8063 12L15.8421 12.0382L8.84214 19.5L8.15796 18.7707L14.5096 12L8.15796 5.22931Z"/>
+                                        </mask>
+                                        <path d="M8.15796 5.22931L7.42865 4.54513L6.78681 5.22931L7.42865 5.91349L8.15796 5.22931ZM8.84214 4.5L9.57145 3.81582L8.84214 3.03839L8.11282 3.81582L8.84214 4.5ZM15.8421 11.9618L16.5715 12.646L17.2133 11.9618L16.5715 11.2776L15.8421 11.9618ZM15.8063 12L15.077 11.3158L14.4351 12L15.077 12.6842L15.8063 12ZM15.8421 12.0382L16.5715 12.7224L17.2133 12.0382L16.5715 11.354L15.8421 12.0382ZM8.84214 19.5L8.11282 20.1842L8.84214 20.9616L9.57145 20.1842L8.84214 19.5ZM8.15796 18.7707L7.42865 18.0865L6.78681 18.7707L7.42865 19.4549L8.15796 18.7707ZM14.5096 12L15.2389 12.6842L15.8808 12L15.2389 11.3158L14.5096 12ZM8.11282 3.81582L7.42865 4.54513L8.88727 5.91349L9.57145 5.18418L8.11282 3.81582ZM16.5356 12.6842L16.5715 12.646L15.1128 11.2776L15.077 11.3158L16.5356 12.6842ZM15.077 12.6842L15.1128 12.7224L16.5715 11.354L16.5356 11.3158L15.077 12.6842ZM9.57145 18.8158L8.88727 18.0865L7.42865 19.4549L8.11282 20.1842L9.57145 18.8158ZM7.42865 5.91349L13.7803 12.6842L15.2389 11.3158L8.88727 4.54513L7.42865 5.91349ZM16.5715 11.2776L9.57145 3.81582L8.11282 5.18418L15.1128 12.646L16.5715 11.2776ZM15.1128 11.354L8.11282 18.8158L9.57145 20.1842L16.5715 12.7224L15.1128 11.354ZM8.88727 19.4549L15.2389 12.6842L13.7803 11.3158L7.42865 18.0865L8.88727 19.4549Z" fill="black" mask="url(#footer-submit-button-mas)"/>
+                                      </svg>
+                                     
+                                    </button>
+                                  </div>
+                                  {%- if form.errors -%}
+                                    <p class="" id="Newsletter-error--{{ section.id }}">
+                                      {{ form.errors.translated_fields.email | capitalize }}
+                                      {{ form.errors.messages.email }}
+                                    </p>
+                                  {%- endif -%}
+                                </div>
+                              </div>
+                            </div>
+                          {% endform %}
+                        </div>
+                      </div>
+                      <script>
+                        !(function() {
+                          const modal = document.querySelector(".newsletter-modal");
+                          const overlay = document.querySelector(".newsletter-modal-overlay");
+                          const closeModalBtn = document.querySelector(".newsletter-modal-close");
+                          
+                          // close modal function
+                          const closeModal = function () {
+                            modal.classList.add("hidden");
+                            // overlay.classList.add("hidden");
+                            // Save data to localStorage
+                            localStorage.setItem('newsletter_dispatch', "true");
+                          };
+                          
+                          // close the modal when the close button and overlay is clicked
+                          closeModalBtn.addEventListener("click", closeModal);
+                          // overlay.addEventListener("click", closeModal);
+                          
+                          // close modal when the Esc key is pressed
+                          document.addEventListener("keydown", function (e) {
+                            if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+                              closeModal();
+                            }
+                          });
+                          
+                          // open modal function
+                          const openModal = function () {
+                            modal.classList.remove("hidden");
+                            // overlay.classList.remove("hidden");
+                          };
+                          // open modal event
+                          const newsletter_dispatch = localStorage.getItem('newsletter_dispatch');
+                          const getCookie = (cname) => {
+                            let name = cname + "=";
+                            let decodedCookie = decodeURIComponent(document.cookie);
+                            let ca = decodedCookie.split(';');
+                            for(let i = 0; i <ca.length; i++) {
+                              let c = ca[i];
+                              while (c.charAt(0) == ' ') {
+                                c = c.substring(1);
+                              }
+                              if (c.indexOf(name) == 0) {
+                                return c.substring(name.length, c.length);
+                              }
+                            }
+                            return "";
+                          }
+                          if(newsletter_dispatch !== "true") {
+                            const check_newsletter_status = setInterval(function() {
+                              // check cookie popup modal height
+                              const cookie_popup = document.querySelector('.cc-window[role="region"]');
+                              if(cookie_popup === null || getCookie('cookieconsent_status') !== "") {
+                                document.documentElement.style.setProperty('--cookie-height', '-8px');
+                              } else {
+                                const cookieHeight = () => {
+                                  if(window.cookieHeight === cookie_popup.offsetHeight) {
+                                    return;
+                                  }
+                                  window.cookieHeight = cookie_popup.offsetHeight;
+                                  document.documentElement.style.setProperty('--cookie-height', `${window.cookieHeight}px`)
+                                }
+                                window.setCookieHeight = cookieHeight;
+                                cookieHeight();
+                                window.addEventListener('resize', cookieHeight);
+                              }
+                              // check form status
+                              const success_message = document.querySelector('.main-password-section__message.reveal');
+                              if(success_message !== null) {
+                                localStorage.setItem('newsletter_dispatch', "true");
+                              }
+                            }, 50);
+                            openModal();
+                          }
+                        })();
+                        $(function(){
+                          $('.footer-menu .menu-item a').click(function(){
+                            let dataName = $(this).attr('data-name');
+                           
+                            if($('.yas-menu-f a[data-name="' + dataName + '"]').length > 0){
+                              $('.yas-menu-f a[data-name="' + dataName + '"]').click();
+                            }else{
+                              location.href = $(this).attr('src');
+                            }
+                            return false;
+                          })
+                        })
+                      </script>
+
+<div class="fm-modal d-none">
+  {{ fm_modals }}
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.footer.name",
+  "settings": [
+   
+         {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Footer menu"
+    },
+    {
+      "type": "link_list",
+      "id": "socials",
+      "label": "Socials"
+    },
+     {
+          "type": "text",
+          "id": "newsletter",
+          "default": "Newsletter",
+          "label": "Newsletter"
+        },
+    {
+          "type": "text",
+          "id": "copyright",
+          "default": "@ GESSEN 2024",
+          "label": "Copyright"
+        },
+    {
+		"type": "header",
+		"content": "modal form contact"
+  	},
+    {
+		"type": "text",
+        "label": "Modal Title",
+		"default": "FREE SHIPPING IN EUROPE",
+        "id": "mod_title"
+  	},
+    {
+		"type": "textarea",
+        "label": "Modal text",
+		"default": "Sign up to our newsletter to recieve a code for free shipping in Europe.",
+        "id": "mod_text"
+  	}
+  ],
+  "default": {
+   
+  }
+}
+{% endschema %}
